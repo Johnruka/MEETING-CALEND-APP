@@ -1,5 +1,8 @@
 package se.lexicon.model;
 
+import java.time.LocalDateTime;
+import java.util.Calendar;
+
 public class Meeting {
 
     private int id;

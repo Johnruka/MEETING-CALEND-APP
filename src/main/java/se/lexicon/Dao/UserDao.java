@@ -1,5 +1,7 @@
 package se.lexicon.Dao;
 
+import se.lexicon.exception.AuthenticationFailedException;
+import se.lexicon.exception.UserExpiredException;
 import se.lexicon.model.User;
 
 import java.util.Optional;

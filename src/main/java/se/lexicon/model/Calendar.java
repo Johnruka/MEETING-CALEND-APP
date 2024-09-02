@@ -1,6 +1,9 @@
 package se.lexicon.model;
 
-public class Calender {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Calendar {
 
     private int id;
     private String title;

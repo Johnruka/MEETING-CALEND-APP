@@ -3,7 +3,7 @@ package se.lexicon.model;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
-import static jdk.internal.icu.text.UTF16.append;
+
 
 public class Meeting {
 

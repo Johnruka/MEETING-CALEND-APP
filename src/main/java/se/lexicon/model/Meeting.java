@@ -3,6 +3,8 @@ package se.lexicon.model;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
+import static jdk.internal.icu.text.UTF16.append;
+
 public class Meeting {
 
     private int id;
@@ -76,7 +78,7 @@ public class Meeting {
         return calendar;
     }
 
-    private void timeValidation() {
+    private String timeValidation() {
         //check if start time is before now
         LocalDateTime now = LocalDateTime.now();
         if (this.startTime.isBefore(now)) {
@@ -86,18 +88,23 @@ public class Meeting {
         if (this.endTime.isBefore(this.startTime)) {
             throw new IllegalArgumentException("End time must be after the start time");
         }
+        return "null";
     }
 
-    public String meetingInfo() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Meeting info: ").append("\n");
-        stringBuilder.append("Id ").append(id).append("\n");
-        stringBuilder.append("Title ").append(title).append("\n");
-        stringBuilder.append("Start Time ").append(startTime).append("\n");
-        stringBuilder.append("End Time ").append(endTime).append("\n");
-        stringBuilder.append("Description ").append(description).append("\n");
-        stringBuilder.append("Calendar title ").append(calendar.getTitle()).append("\n");
 
-        return stringBuilder.toString();
+        public String meetingInfo () {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("Meeting info: ").append("\n");
+            stringBuilder.append("Id ").append(id).append("\n");
+            stringBuilder.append("Title ").append(title).append("\n");
+            stringBuilder.append("Start Time ").append(startTime).append("\n");
+            stringBuilder.append("End Time ").append(endTime).append("\n");
+            stringBuilder.append("Description ").append(description).append("\n");
+            stringBuilder.append("Calendar title ");
+
+
+
+            return stringBuilder.toString();
+        }
     }
-}
+

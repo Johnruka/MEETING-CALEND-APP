@@ -1,6 +1,5 @@
 package se.lexicon.db;
 
-import se.lexicon.exception.DBConnectionException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,17 +7,21 @@ import java.sql.SQLException;
 
 public class CalendarDBConnection {
 
-    private static final String DB_NAME = "g51_meeting_calendar_db";
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
-    private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "788083";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/g51_meeting_calendar_db";
+    private static final String JDBC_USER = "root";
+    private static final String JDBC_PWD = "788083";
 
 
     public static Connection getConnection() {
+        Connection connection = null;
         try {
-            return DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD);
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PWD);
         } catch (SQLException e) {
-            throw new DBConnectionException("Failed to connect to DB.");
+            e.printStackTrace();
         }
+        return connection;
     }
-}
+
+
+    }
+

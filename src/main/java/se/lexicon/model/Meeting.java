@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 
 
-
 public class Meeting {
 
     private int id;
@@ -50,31 +49,41 @@ public class Meeting {
         this.description = description;
     }
 
+    public Meeting(int meetingId, String title, LocalDateTime startTime, LocalDateTime endTime, String description, String calendar) {
+    }
+
     public void setCalendar(Calendar calendar) {
+
         this.calendar = calendar;
     }
 
     public int getId() {
+
         return id;
     }
 
     public String getTitle() {
+
         return title;
     }
 
     public LocalDateTime getStartTime() {
+
         return startTime;
     }
 
     public LocalDateTime getEndTime() {
+
         return endTime;
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public Calendar getCalendar() {
+
         return calendar;
     }
 
@@ -92,19 +101,15 @@ public class Meeting {
     }
 
 
-        public String meetingInfo () {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("Meeting info: ").append("\n");
-            stringBuilder.append("Id ").append(id).append("\n");
-            stringBuilder.append("Title ").append(title).append("\n");
-            stringBuilder.append("Start Time ").append(startTime).append("\n");
-            stringBuilder.append("End Time ").append(endTime).append("\n");
-            stringBuilder.append("Description ").append(description).append("\n");
-            stringBuilder.append("Calendar title ");
-
-
-
-            return stringBuilder.toString();
-        }
+    public String meetingInfo() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Meeting info: ").append("\n");
+        stringBuilder.append("Id ").append(id).append("\n");
+        stringBuilder.append("Title ").append(title).append("\n");
+        stringBuilder.append("Start Time ").append(startTime).append("\n");
+        stringBuilder.append("End Time ").append(endTime).append("\n");
+        stringBuilder.append("Description ").append(description).append("\n");
+        return stringBuilder.toString();
     }
+}
 

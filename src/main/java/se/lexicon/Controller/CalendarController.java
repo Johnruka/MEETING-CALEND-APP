@@ -1,6 +1,7 @@
 package se.lexicon.Controller;
 
 import se.lexicon.Dao.CalendarDao;
+import se.lexicon.Dao.MeetingDao;
 import se.lexicon.Dao.UserDao;
 import se.lexicon.exception.CalendarExceptionHandler;
 import se.lexicon.model.Calendar;
@@ -11,17 +12,19 @@ public class CalendarController {
 
     //dependencies:
     private CalendarView view;
-    private UserDao userDAO;
-    private CalendarDao calendarDAO;
+    private UserDao userDao;
+    private CalendarDao calendarDao;
+    private MeetingDao meetingDao;
 
     //fields:
     private boolean isLoggedIn;
     private String username;
 
-    public CalendarController(CalendarView view, UserDao userDAO, CalendarDao calendarDAO) {
+    public CalendarController(CalendarView view, UserDao userDAO, CalendarDao calendarDAO, MeetingDao meetingDao) {
         this.view = view;
-        this.userDAO = userDAO;
-        this.calendarDAO = calendarDAO;
+        this.userDao = userDAO;
+        this.calendarDao = calendarDAO;
+        this.meetingDao = meetingDao;
     }
 
     public void run() {
@@ -76,14 +79,14 @@ public class CalendarController {
     private void register() {
         view.displayMessage("Enter your username");
         String username = view.promoteString();
-        User registeredUser = userDAO.createUser(username);
+        User registeredUser = userDao.createUser(username);
         view.displayUser(registeredUser);
     }
 
     private void login() {
         User user = view.promoteUserForm();
         try {
-            isLoggedIn = userDAO.authenticate(user);
+            isLoggedIn = userDao.authenticate(user);
             username = user.getUsername();
             view.displaySuccessMessage("Login successful. Welcome " + username);
         } catch (Exception e) {
@@ -97,7 +100,7 @@ public class CalendarController {
             return;
         }
         String calendarTitle = view.promoteCalendarForm();
-        Calendar createdCalendar = calendarDAO.createCalendar(calendarTitle, username);
+        Calendar createdCalendar = calendarDao.createCalendar(calendarTitle, username);
         view.displaySuccessMessage("Calendar created successfully.");
         view.displayCalendar(createdCalendar);
 
